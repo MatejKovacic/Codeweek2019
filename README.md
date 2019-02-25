@@ -11,7 +11,7 @@ Arduino koda za Codeweek delavnico, februarja 2019
 - 1 x 1k Ohm upor
 
 ## Programska oprema
-- [Arduino IDE] (https://www.arduino.cc/en/Main/Software)
+- [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 - *codeweek2019.ino*
 
 ## Delovanje
