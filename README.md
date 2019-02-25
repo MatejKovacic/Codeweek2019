@@ -7,7 +7,7 @@ Arduino koda za Codeweek delavnico, februarja 2019
 - 1 x magnetno stikalo
 - 1 x LED dioda
 - 1 x piskač
-- 2 x 220 Ohm upor
+- 1 x ali 2 x 220 Ohm upor (upor uporabimo pri vezavi LED diod, lahko pa tudi pri vezavi piskača)
 - 1 x 1k Ohm upor
 
 ## Programska oprema
@@ -26,20 +26,22 @@ Ultrazvočni senzor odda ultrazvočni pulz (na frekvenci 40.000 Hz). Ko ultrazvo
 
 Če je objekt odaljen 10 cm, bo zvočni val do njega potoval 294 mikrosekund. Izračun:
 
-  čas_potovanja_zvoka = razdalja_do_objekta / hitrost_zvoka = 10 cm / 0.034 cm/µs = 294,11 mikrosekund
+`čas_potovanja_zvoka = razdalja_do_objekta / hitrost_zvoka = 10 cm / 0.034 cm/µs = 294,11 mikrosekund`
 
-Ker zaznamo *odboj* zvočnega vala (ko se odbije, mora zvočni val pripotovati še nazaj do senzorja), je razdaljo treba deliti z 2. Torej:
+Ker zaznamo *odboj* zvočnega vala (ko se odbije, mora zvočni val pripotovati še nazaj do senzorja), je dobljeno razdaljo treba deliti z 2. Torej:
 
-  razdalja = trajanje_potovanja_zvocnega_impulza * 0.034 / 2
+`razdalja = trajanje_potovanja_zvocnega_impulza * 0.034 / 2`
 
-### Frekvenca piskanja glede na oddaljenost predmeta od ultrazvočnega senzorja
+### Izračun fekvence piskanja glede na oddaljenost predmeta od ultrazvočnega senzorja
 Ker želimo, da piskač piska glede na izmerjeno razdaljo, izračunamo s kakšnim tonom naj piskač zapiska. Pri tem je potrebno upoštevati, da piskamo samo do razdalje največ 50 cm.
 
 Uporabimo funkcijo preslikave izmerjene razdalje na frekvenco piskanja (funkcija *map*). Frekvenca piskanja je od 3000 Hz do 20 Hz. Preslikamo torej vrednosti razdalje od 0 do 50 cm na frevenco zvoka od 3000 do 20 Hz. To pomeni, da bližje kot je predmet, višji bo ton piskanja in obratno - ko se predmet oddalji od ultrazvočnega senzorja, bo piskanje nižje, po 50 cm oddaljenosti pa bo utihnilo.
 
 Programska koda:
-  int frekvenca_piskanja = map(razdalja, 0, 50, 3000, 20);
-  tone(pin_piskaca, frekvenca_piskanja); 
+```
+int frekvenca_piskanja = map(razdalja, 0, 50, 3000, 20);
+tone(pin_piskaca, frekvenca_piskanja); 
+```
 
 ## Zanimivosti
 Ultrazvočni senzor oddaja zvok s frekvenco 40 kHZ. Ljudje slišimo zvoke do okrog 20 kHz, živali pa bistveno več. Netopirji do 100 kHz (oziroma morda celo do 200 kHz), psi do 45 kHz, mačke pa do 64 kHz. Ultrazvočne piščalke se uporabljajo za treniranje psov - psi zvok iz takšne piščalke slišijo, za ljudi pa je neslišen.
