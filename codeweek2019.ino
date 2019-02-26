@@ -23,7 +23,8 @@
 *   GND <--- (-) LED dioda (+) -- 220 Ohm --> D8
 *   
 *   4. Piskač:
-*   D8 --- 220 Ohm --- piskač --- GND
+*   D3 --- 220 Ohm --- (+) piskač (-) --- GND
+*   (upor lahko tudi izpustimo)
 *   (220 Ohm = rdeča - rdeča - rjava - zlata)
 */ 
 
